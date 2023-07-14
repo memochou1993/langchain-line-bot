@@ -4,8 +4,8 @@ RUN apt-get update && apt-get install build-essential -y
 
 WORKDIR /app
 
-COPY credentials.json ~/.credentials/credentials.json
 COPY . .
+COPY credentials.json credentials.json
 
 RUN pip install --no-cache-dir -r requirements.txt
 

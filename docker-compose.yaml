@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  app:
+    container_name: langchain-line-bot
+    build: .
+    platform: linux/amd64
+    restart: always
+    ports:
+      - "${APP_PORT}:5000"

@@ -3,3 +3,5 @@ __pycache__
 .chroma
 .vercel
 .env
+credentials.json
+token.json

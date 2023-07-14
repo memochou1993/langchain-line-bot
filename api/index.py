@@ -32,6 +32,8 @@ app = Flask(__name__)
 
 loader = GoogleDriveLoader(
     folder_id=os.environ['GOOGLE_DRIVE_FOLDER_ID'],
+    credentials_path='credentials.json',
+    token_path='token.json',
     recursive=False,
 )
 docs = loader.load()

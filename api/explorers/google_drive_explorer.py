@@ -18,7 +18,7 @@ text_splitter = RecursiveCharacterTextSplitter(
     separators=[' ', ',', '\n'],
 )
 embeddings = OpenAIEmbeddings()
-llm = ChatOpenAI(temperature=0, model_name='gpt-3.5-turbo')
+llm = ChatOpenAI(temperature=0, model_name='gpt-3.5-turbo-16k')
 
 class GoogleDriveExplorer:
     def __init__(self):

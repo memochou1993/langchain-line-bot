@@ -37,7 +37,7 @@ app.logger.setLevel(logging.DEBUG)
 configuration = Configuration(access_token=os.getenv('LINE_CHANNEL_ACCESS_TOKEN'))
 webhook_handler = WebhookHandler(os.getenv('LINE_CHANNEL_SECRET'))
 
-google_drive_inquiry_assistant = GoogleDriveExplorer()
+google_drive_inquiry_explorer = GoogleDriveExplorer()
 
 @app.route('/', methods=['GET'])
 def index():
@@ -45,7 +45,7 @@ def index():
 
 @app.route('/load', methods=['POST'])
 def load():
-    google_drive_inquiry_assistant.load()
+    google_drive_inquiry_explorer.load()
     return Response(status=200)
 
 @app.route('/webhook', methods=['POST'])
@@ -61,7 +61,7 @@ def webhook():
 
 @webhook_handler.add(MessageEvent, message=TextMessageContent)
 def handle_message(event):
-    answer = google_drive_inquiry_assistant.ask(event.message.text)
+    answer = google_drive_inquiry_explorer.ask(event.message.text)
     with ApiClient(configuration) as api_client:
         line_bot_api = MessagingApi(api_client)
         line_bot_api.reply_message_with_http_info(
